@@ -17,7 +17,7 @@ const navData = [
 		icon: "../svg/card-with-hand-line-1.svg",
 	},
 	{
-		title: "Transactions",
+		title: "Insights",
 		icon: "../svg/investment-fill-1.svg",
 	},
 

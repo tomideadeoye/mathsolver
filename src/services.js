@@ -1,23 +1,27 @@
 import axios from "axios";
 
-const api = "https://king-prawn-app-c9gz3.ondigitalocean.app/";
+// // const api = "https://king-prawn-app-c9gz3.ondigitalocean.app/";
+const baseurl = 'https://king-prawn-app-c9gz3.ondigitalocean.app/'
 
-export async function axiosCall(url, data, method) {
-	if (data.image_url !== "") {
-		data.image = "";
-		data.image_id = "";
-	}
+// const baseurl = "http://localhost:8000/";
 
-	let formdata = new FormData();
-	for (const key in data) {
-		formdata.append(key, data[key]);
-	}
+// eslint-disable-next-line no-unused-vars
+export async function axiosCall(path, data, method) {
+	let headersList = {
+		Accept: "*/*",
+		"Content-Type": "application/json",
+	};
+
+	let bodyContent = JSON.stringify(data);
 
 	let reqOptions = {
-		url: api + url,
-		method: method ? method : "POST",
-		headers: {},
-		data: formdata,
+		url: baseurl + path,
+		method: method,
+		headers: headersList,
+		data: bodyContent,
 	};
-	return await axios.request(reqOptions);
+
+	let response = await axios.request(reqOptions);
+	console.log(response);
+	return response;
 }

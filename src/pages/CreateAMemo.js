@@ -66,6 +66,8 @@ const CreateAMemo = () => {
 		pitch_uploaded: "",
 	});
 
+	console.log(values.pitch_uploaded);
+
 	const validityCheck = () => {
 		if (
 			values.name === "" ||
@@ -78,10 +80,10 @@ const CreateAMemo = () => {
 	};
 
 	const handleSubmit = async () => {
-		const response = await axiosCall("upload/", values, "GET");
+		const response = await axiosCall("upload/", values, "POST");
 		console.log(response);
 
-		if (response === "success") {
+		if (response.status === 200) {
 			setSuccess(true);
 			setTimeout(() => {
 				setSuccess(false);
@@ -134,7 +136,7 @@ const CreateAMemo = () => {
 						onChange={(e) => setValues({ ...values, emailTo: e.target.value })}
 					/>
 
-					<Stack direction={"row"} spacing={5}>
+					<Stack direction={isMobile ? "column" : "row"} spacing={5}>
 						<Button variant="outline" component="label" fullWidth>
 							Upload Deck
 							<input
@@ -149,7 +151,7 @@ const CreateAMemo = () => {
 						</Button>
 						<Box width="100%" height="100%">
 							{values.pitch_uploaded === ""
-								? "No file yet!! let's see the amazing pitch_uploaded you have!!"
+								? "No file yet!! let's see the amazing pitch you have!!"
 								: `${values.pitch_uploaded.name} will be used to create your memo 🤞🏿`}
 						</Box>
 					</Stack>
