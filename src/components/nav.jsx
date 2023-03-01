@@ -42,7 +42,7 @@ const useStyles = makeStyles((theme) => ({
 		fontFamily: "Roboto",
 		fontStyle: "normal",
 		fontWeight: 400,
-		fontSize: "16px",
+		fontSize: "14px",
 		lineHeight: "19px",
 		color: theme.palette.green[200],
 
@@ -85,14 +85,14 @@ export default function SideNav({ activePage, setActivePage }) {
 		return (
 			<Stack className={styles.container}>
 				<Stack>
-					<Box
+					{/* <Box
 						component="img"
 						alt="cloud bank logo"
 						src="../svg/cloudbank-1@2x.png"
 						width="150px"
 						mb={3}
 						className={styles.logo}
-					/>
+					/> */}
 
 					<Stack justifyContent="space-between">
 						{navData.map((item, index) => (

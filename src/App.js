@@ -1,7 +1,7 @@
-import LoanCategory from "./pages/LoanCategory";
+import CreateAMemo from "./pages/CreateAMemo";
 import React from "react";
 
 function App() {
-	return <LoanCategory />;
+	return <CreateAMemo />;
 }
 export default App;
