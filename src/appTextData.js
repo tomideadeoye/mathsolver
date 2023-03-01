@@ -73,4 +73,8 @@ const dataBox = [
 	},
 ];
 
-export { navData, dataBox };
+const otherData = {
+	server: "https://king-prawn-app-c9gz3.ondigitalocean.app/upload/",
+};
+
+export { navData, dataBox, otherData };

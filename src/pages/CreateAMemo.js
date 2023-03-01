@@ -6,6 +6,7 @@ import { PageTransition } from "../components/animations";
 import moment from "moment";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
+import { axiosCall } from "../services";
 
 const useStyles = makeStyles((theme) => ({
 	container: {
@@ -59,27 +60,26 @@ const CreateAMemo = () => {
 	// eslint-disable-next-line no-unused-vars
 	const [success, setSuccess] = useState(false);
 	const [values, setValues] = useState({
-		companyName: "",
-		companyWebsite: "",
+		name: "",
+		website: "",
 		emailTo: "",
-		deck: "",
+		pitch_uploaded: "",
 	});
 
 	const validityCheck = () => {
 		if (
-			values.companyName === "" ||
+			values.name === "" ||
 			values.emailTo === "" ||
-			values.deck === ""
+			values.pitch_uploaded === ""
 		) {
 			return true;
 		}
 		return false;
 	};
 
-	const handleSubmit = () => {
-		// make a post request to the backend
-
-		const response = "success";
+	const handleSubmit = async () => {
+		const response = await axiosCall("upload/", values, "GET");
+		console.log(response);
 
 		if (response === "success") {
 			setSuccess(true);
@@ -111,10 +111,8 @@ const CreateAMemo = () => {
 						variant="standard"
 						fullWidth
 						placeholder="Company Name"
-						value={values.companyName}
-						onChange={(e) =>
-							setValues({ ...values, companyName: e.target.value })
-						}
+						value={values.name}
+						onChange={(e) => setValues({ ...values, name: e.target.value })}
 					/>
 					<TextField
 						hiddenLabel
@@ -122,10 +120,8 @@ const CreateAMemo = () => {
 						variant="standard"
 						fullWidth
 						placeholder="Company Website"
-						value={values.companyWebsite}
-						onChange={(e) =>
-							setValues({ ...values, companyWebsite: e.target.value })
-						}
+						value={values.website}
+						onChange={(e) => setValues({ ...values, website: e.target.value })}
 					/>
 
 					<TextField
@@ -147,14 +143,14 @@ const CreateAMemo = () => {
 								multiple
 								type="file"
 								onChange={(e) =>
-									setValues({ ...values, deck: e.target.files[0] })
+									setValues({ ...values, pitch_uploaded: e.target.files[0] })
 								}
 							/>
 						</Button>
 						<Box width="100%" height="100%">
-							{values.deck === ""
-								? "No file yet!! let's see the amazing deck you have!!"
-								: `${values.deck.name} will be used to create your memo 🤞🏿`}
+							{values.pitch_uploaded === ""
+								? "No file yet!! let's see the amazing pitch_uploaded you have!!"
+								: `${values.pitch_uploaded.name} will be used to create your memo 🤞🏿`}
 						</Box>
 					</Stack>
 
@@ -171,18 +167,17 @@ const CreateAMemo = () => {
 					{success && (
 						<Alert severity="info">
 							<AlertTitle>Congratualtions!!</AlertTitle>
-							Your Memo for <strong>{values.companyName} </strong>
+							Your Memo for <strong>{values.name} </strong>
 							will be sent to <strong>{values.emailTo} </strong>
-							using information sourced from{" "}
-							<strong>{values.companyWebsite}</strong>
+							using information sourced from <strong>{values.website}</strong>
 						</Alert>
 					)}
 					{error && (
 						<Alert severity="error">
 							<AlertTitle>Error</AlertTitle>
-							Your Memo for <strong>{values.companyName}</strong>
+							Your Memo for <strong>{values.name}</strong>
 							has been sent to <strong>{values.emailTo}</strong>
-							data was sourced from <strong>{values.companyWebsite}</strong>
+							data was sourced from <strong>{values.website}</strong>
 						</Alert>
 					)}
 				</Stack>
