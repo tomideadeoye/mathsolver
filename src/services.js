@@ -1,7 +1,7 @@
 import axios from "axios";
 
 // const api = "https://king-prawn-app-c9gz3.ondigitalocean.app/";
-const baseurl = 'https://king-prawn-app-c9gz3.ondigitalocean.app/'
+const baseurl = "https://king-prawn-app-c9gz3.ondigitalocean.app/";
 
 // const baseurl = "http://localhost:8000/";
 
@@ -11,6 +11,8 @@ export async function axiosCall(path, data, method) {
 		Accept: "*/*",
 		"Content-Type": "application/json",
 	};
+
+	// convert base64
 
 	let bodyContent = JSON.stringify(data);
 
