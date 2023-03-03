@@ -8,8 +8,8 @@ import { AnimationMakerButton } from "./animations";
 
 const useStyles = makeStyles((theme) => ({
 	container: {
-		height: "auto",
-		width: "20%",
+		// height: "10%",
+		// width: "20%",
 		top: 0,
 		left: 0,
 		background: theme.palette.white.main,
@@ -63,12 +63,12 @@ export default function SideNav({ activePage, setActivePage }) {
 				justifyContent="space-between"
 				alignItems="center"
 				width="100%"
-				height="100%"
+				// height="100%"
 				padding={2}
 				maxWidth="60%"
 			>
 				<CustomDrawer setActivePage={setActivePage} />
-				<AnimationMakerButton>
+				{/* <AnimationMakerButton>
 					<Box
 						component="img"
 						alt="cloud bank logo"
@@ -76,7 +76,7 @@ export default function SideNav({ activePage, setActivePage }) {
 						width="60px"
 						className={styles.logo}
 					/>
-				</AnimationMakerButton>
+				</AnimationMakerButton> */}
 			</Stack>
 		);
 	}

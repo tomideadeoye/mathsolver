@@ -7,6 +7,7 @@ import moment from "moment";
 import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
 import { axiosCall } from "../services";
+import { ThreeCircles } from "react-loader-spinner";
 
 const useStyles = makeStyles((theme) => ({
 	container: {
@@ -59,14 +60,13 @@ const CreateAMemo = () => {
 	const [error, setError] = useState(false);
 	// eslint-disable-next-line no-unused-vars
 	const [success, setSuccess] = useState(false);
+	const [loading, setLoading] = useState(false);
 	const [values, setValues] = useState({
 		name: "",
 		website: "",
 		emailTo: "",
 		pitch_uploaded: "",
 	});
-
-	console.log(values.pitch_uploaded);
 
 	const validityCheck = () => {
 		if (
@@ -80,16 +80,18 @@ const CreateAMemo = () => {
 	};
 
 	const handleSubmit = async () => {
+		setLoading(true);
 		const response = await axiosCall("upload/", values, "POST");
-		console.log(response);
 
-		if (response.status === 200) {
+		if (response.status >= 200 && response.status < 300) {
+			setLoading(false);
 			setSuccess(true);
 			setTimeout(() => {
 				setSuccess(false);
 			}, 3000);
 		} else {
 			setError(true);
+			setLoading(false);
 		}
 	};
 
@@ -166,6 +168,20 @@ const CreateAMemo = () => {
 					>
 						Process Memo
 					</Button>
+					{loading && (
+						<ThreeCircles
+							height="100"
+							width="100"
+							color="#4fa94d"
+							wrapperStyle={{}}
+							wrapperClass=""
+							visible={true}
+							ariaLabel="three-circles-rotating"
+							outerCircleColor=""
+							innerCircleColor=""
+							middleCircleColor=""
+						/>
+					)}
 					{success && (
 						<Alert severity="info">
 							<AlertTitle>Congratualtions!!</AlertTitle>

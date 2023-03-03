@@ -1,29 +1,28 @@
 import axios from "axios";
+// import fs from "fs";
 
-// const api = "https://king-prawn-app-c9gz3.ondigitalocean.app/";
-const baseurl = "https://king-prawn-app-c9gz3.ondigitalocean.app/";
+// const baseurl = "https://king-prawn-app-c9gz3.ondigitalocean.app/";
 
-// const baseurl = "http://localhost:8000/";
+const baseurl = "http://localhost:8000/";
 
 // eslint-disable-next-line no-unused-vars
 export async function axiosCall(path, data, method) {
-	let headersList = {
-		Accept: "*/*",
-		"Content-Type": "application/json",
-	};
+	let formdata = new FormData();
+	formdata.append("name", data.name);
+	formdata.append("emailTo", data.emailTo);
+	formdata.append("website", data.website);
+	formdata.append("pitch_uploaded", data.pitch_uploaded);
 
-	// convert base64
+	let bodyContent = formdata;
 
-	let bodyContent = JSON.stringify(data);
-
-	let reqOptions = {
-		url: baseurl + path,
+	const response = await axios({
+		header: {
+			"Content-Type": "multipart/form-data",
+		},
 		method: method,
-		headers: headersList,
+		url: baseurl + path,
 		data: bodyContent,
-	};
+	});
 
-	let response = await axios.request(reqOptions);
-	console.log(response);
 	return response;
 }
