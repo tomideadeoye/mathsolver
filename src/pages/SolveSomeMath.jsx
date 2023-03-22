@@ -134,67 +134,63 @@ const SolveSomeMath = () => {
 	};
 
 	return (
-		<ErrorBoundary>
-			<PageTransition>
-				<Stack className={styles.container}>
-					<Header />
-					<Stack px={2} py={1} className={styles.dashboard} spacing={1}>
-						<Stack
-							sx={{
-								height: "75vh",
-								overflowY: "scroll",
-							}}
-						>
-							{conversation.map((msg, index) => {
-								return (
-									<Fragment key={index}>
-										<ChatMsg
-											side={msg.type === "user" ? "right" : "left"}
-											avatar={
-												msg.type === "user" ? "" : "./images/twitter.jpeg"
-											}
-											messages={
-												Array.isArray(msg.text) ? [...msg.text] : [msg.text]
-											}
+		<PageTransition>
+			<Stack className={styles.container}>
+				<Header />
+				<Stack px={2} py={1} className={styles.dashboard} spacing={1}>
+					<Stack
+						sx={{
+							height: "75vh",
+							overflowY: "scroll",
+						}}
+					>
+						{conversation.map((msg, index) => {
+							return (
+								<Fragment key={index}>
+									<ChatMsg
+										side={msg.type === "user" ? "right" : "left"}
+										avatar={msg.type === "user" ? "" : "./images/twitter.jpeg"}
+										messages={
+											Array.isArray(msg.text) ? [...msg.text] : [msg.text]
+										}
+									/>
+									{index == 0 && (
+										<img
+											src="https://media.giphy.com/media/W35DnRbN4oDHIAApdk/giphy.gif"
+											alt="gif"
+											height={150}
+											style={{ marginLeft: "60px" }}
+											width={150}
 										/>
-										{index == 0 && (
-											<img
-												src="https://media.giphy.com/media/W35DnRbN4oDHIAApdk/giphy.gif"
-												alt="gif"
-												height={150}
-												style={{ marginLeft: "60px" }}
-												width={150}
-											/>
-										)}
-									</Fragment>
-								);
-							})}
-						</Stack>
+									)}
+								</Fragment>
+							);
+						})}
+					</Stack>
 
-						<Stack direction="row" spacing={2} className={styles.chatSection}>
-							<TextField
-								hiddenLabel
-								id="filled-hidden-label-normal"
-								variant="standard"
-								fullWidth
-								placeholder="Your math problem"
-								value={problem}
-								onChange={handleProblem}
-								color="success"
-							/>
-							<IconButton
-								onClick={validityCheck}
-								color="success"
-								component="send"
-								role="send"
-							>
-								<SendIcon />
-							</IconButton>
-						</Stack>
+					<Stack direction="row" spacing={2} className={styles.chatSection}>
+						<TextField
+							hiddenLabel
+							id="filled-hidden-label-normal"
+							variant="standard"
+							fullWidth
+							placeholder="Your math problem"
+							value={problem}
+							onChange={handleProblem}
+							color="success"
+						/>
+						<IconButton
+							onClick={validityCheck}
+							color="success"
+							component="send"
+							role="send"
+						>
+							<SendIcon />
+						</IconButton>
 					</Stack>
 				</Stack>
-			</PageTransition>
-		</ErrorBoundary>
+			</Stack>
+		</PageTransition>
 	);
 };
 
