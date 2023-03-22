@@ -21,5 +21,3 @@ SOME PROJECT LINKS 🧑🏿‍💻:
 Juice Spend: https://tomidejuiceui.netlify.app/ (React JS)
 Verify Pro: https://verifypro.netlify.app/ (React JS, Firebase)
 Unilever Compliance: https://unicomreport.netlify.app/ (React JS)
-Referral Management: https://dexter.dukka.com/ (React JS, Django)
-Book keeping mobile app: https://play.google.com/store/apps/details?id=com.dukka.dukka (Flutter, Django)
