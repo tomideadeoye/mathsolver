@@ -7,7 +7,7 @@ import { PageTransition } from "../components/animations";
 import mathsteps from "mathsteps";
 import Header from "../components/header";
 
-import ErrorBoundary from "../utils/errorBoundry";
+// import ErrorBoundary from "../utils/errorBoundry";
 
 const useStyles = makeStyles(() => ({
 	container: {
