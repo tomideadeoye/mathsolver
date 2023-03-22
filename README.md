@@ -9,7 +9,7 @@ Built with React, mathsteps and MUI. Jest for Testing.
 
 Tomide Adeoye.
 M: +234 818 192 7251
-
+Email: tomideadeoye@gmail.com
 Website: https://tomide-adeoye.netlify.app
 Twitter: https://twitter.com/_Tomide
 GitHub: https://github.com/tomideadeoye
