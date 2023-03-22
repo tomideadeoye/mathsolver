@@ -13,7 +13,6 @@ const useStyles = makeStyles(() => ({
 	container: {
 		backgroundImage: `url(${"./images/wallpaper.png"})`,
 		backgroundSize: "contain",
-
 		height: "100vh",
 		justifyContent: "space-between",
 	},
@@ -157,9 +156,9 @@ const App = () => {
 									<img
 										src="https://media.giphy.com/media/W35DnRbN4oDHIAApdk/giphy.gif"
 										alt="gif"
-										height={150}
-										style={{ marginLeft: "80px" }}
-										width={150}
+										height={180}
+										style={{ marginLeft: "120px" }}
+										width={180}
 									/>
 								)}
 							</Fragment>
