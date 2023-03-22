@@ -1,8 +1,8 @@
 import { Avatar, Stack } from "@mui/material";
 import React from "react";
-import { makeStyles } from "@mui/styles";
 import Badge from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
+import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles(() => ({
 	loans: {
