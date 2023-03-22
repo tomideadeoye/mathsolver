@@ -1,12 +1,12 @@
-/* eslint-disable no-unused-vars */
-import { IconButton, Stack, TextField, useMediaQuery } from "@mui/material";
+import ChatMsg from "@mui-treasury/components/chatMsg/ChatMsg";
+import { IconButton, Stack, TextField } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { makeStyles } from "@mui/styles";
 import { PageTransition } from "../components/animations";
 import mathsteps from "mathsteps";
 import Header from "../components/header";
-import ChatMsg from "@mui-treasury/components/chatMsg/ChatMsg";
+
 import ErrorBoundary from "../utils/errorBoundry";
 
 const useStyles = makeStyles(() => ({
