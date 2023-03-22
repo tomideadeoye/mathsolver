@@ -37,8 +37,9 @@ export default createTheme({
 		},
 		h6: {
 			fontSize: "1.6rem",
+			fontWeight: 100,
+			color: "#fff",
 		},
-		subtitle2: {},
 
 		button: {
 			fontSize: "1rem",
